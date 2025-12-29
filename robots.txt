@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://THAITECHNEWS.github.io/guida-tecnica-epg-iptv/sitemap.xml

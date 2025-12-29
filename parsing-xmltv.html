@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://THAITECHNEWS.github.io/guida-tecnica-epg-iptv/">
+    <title>Parsing XMLTV con Python - Guida Tecnica EPG e IPTV 2026</title>
+    <meta name="description" content="Parsing XMLTV con Python - Guida completa e aggiornata 2026">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #ecf0f1;
+        }
+        .header {
+            background: #34495e;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .nav {
+            background: #2c3e50;
+            padding: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: background 0.3s;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav a:hover, .nav a.active {
+            background: #3498db;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.9em;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        p {
+            margin-bottom: 18px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            background: white;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+            }
+            .nav a {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Guida Tecnica EPG e IPTV</h1>
+            <p>Guida Completa e Aggiornata 2026</p>
+        </div>
+    </div>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="">Introduzione a EPG e IPTV</a>
+<a href="parsing-xmltv.html" class="active">Parsing XMLTV con Python</a>
+<a href="integrazione-iptv.html" class="">Integrazione con Servizi IPTV</a>
+<a href="best-practices.html" class="">Best Practices EPG</a>
+<a href="troubleshooting.html" class="">Troubleshooting Comune</a>
+<a href="risorse-github.html" class="">Risorse e Librerie GitHub</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="content">
+            <h1>Parsing XMLTV con Python</h1>
+            ```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing XMLTV con Python: Guida Completa</title>
+</head>
+<body>
+    <header>
+        <h1>Parsing XMLTV con Python: Guida Completa</h1>
+        <p>Scopri come effettuare il parsing di file XMLTV utilizzando Python, con esempi pratici e best practices.</p>
+    </header>
+    
+    <section>
+        <h2>Introduzione a XMLTV</h2>
+        <p>XMLTV è un formato XML utilizzato principalmente per descrivere i palinsesti televisivi. Questo standard è ampiamente adottato da numerosi software e servizi che necessitano di elaborare e visualizzare informazioni sui programmi TV.</p>
+    </section>
+
+    <section>
+        <h2>Perché usare Python per il parsing di XMLTV?</h2>
+        <p>Python è una scelta eccellente per il parsing di XMLTV grazie alla sua sintassi semplice e alla vasta disponibilità di librerie dedicate al trattamento di dati XML. In particolare, librerie come <code>xml.etree.ElementTree</code> e <code>lxml</code> rendono il processo di parsing efficiente e relativamente semplice.</p>
+    </section>
+
+    <section>
+        <h2>Esempio di Parsing con <code>xml.etree.ElementTree</code></h2>
+        <p>Per iniziare, vediamo un esempio di come eseguire il parsing di un file XMLTV usando la libreria standard di Python, <code>xml.etree.ElementTree</code>.</p>
+        <pre><code>import xml.etree.ElementTree as ET
+
+def parse_xmltv(file_path):
+    tree = ET.parse(file_path)
+    root = tree.getroot()
+
+    for programme in root.findall('programme'):
+        start = programme.get('start')
+        channel = programme.get('channel')
+        title = programme.find('title').text
+        print(f"Channel: {channel}, Start: {start}, Title: {title}")
+
+# Esempio di utilizzo
+parse_xmltv('guida_tv.xml')</code></pre>
+        <p>In questo esempio, il codice carica un file XMLTV, analizza gli elementi <code>&lt;programme&gt;</code> e stampa alcune informazioni essenziali come il canale, l'orario di inizio e il titolo del programma.<p>Per maggiori informazioni, visita <a href="https://streaming-community.xyz" rel="dofollow">guida streaming</a>.</p></p>
+    </section>
+
+    <section>
+        <h2>Parsing Avanzato con <code>lxml</code></h2>
+        <p>Per esigenze più avanzate, la libreria <code>lxml</code> offre funzionalità di parsing più potenti e una maggiore velocità rispetto a <code>xml.etree.ElementTree</code>. Ecco un esempio di come utilizzarla:</p>
+        <pre><code>from lxml import etree
+
+def parse_xmltv_with_lxml(file_path):
+    tree = etree.parse(file_path)
+    root = tree.getroot()
+
+    for programme in root.xpath('//programme'):
+        start = programme.get('start')
+        channel = programme.get('channel')
+        title = programme.find('title').text
+        print(f"Channel: {channel}, Start: {start}, Title: {title}")
+
+# Esempio di utilizzo
+parse_xmltv_with_lxml('guida_tv.xml')</code></pre>
+        <p>In questo esempio, utilizziamo <code>XPath</code> per navigare nell'albero XML, offrendo una sintassi più espressiva per selezionare i nodi desiderati.<p>Consulta la <a href="https://streaming-community.xyz/stasera-in-tv" rel="dofollow">programmi TV stasera</a> per vedere cosa c'è in programmazione.</p></p>
+    </section>
+
+    <section>
+        <h2>Best Practices per il Parsing di XMLTV</h2>
+        <ul>
+            <li><strong>Gestione delle eccezioni:</strong> Assicurati di gestire le eccezioni, soprattutto quando si tratta di file XML potenzialmente malformati.</li>
+            <li><strong>Validazione dei dati:</strong> Verifica la presenza e la correttezza dei dati prima di utilizzarli, come la verifica di attributi obbligatori o elementi mancanti.</li>
+            <li><strong>Uso di generatori:</strong> Per file XML di grandi dimensioni, considera l'uso di generatori per elaborare i dati in modo lazy, riducendo così l'uso di memoria.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Risorse Utili</h2>
+        <p>Per ulteriori approfondimenti, consulta le seguenti risorse:</p>
+        <ul>
+            <li><a href="https://docs.python.org/3/library/xml.etree.elementtree.html" target="_blank">Documentazione ufficiale di xml.etree.ElementTree</a></li>
+            <li><a href="https://lxml.de/" target="_blank">Documentazione ufficiale di lxml</a></li>
+            <li><a href="https://github.com/xmltv/xmltv" target="_blank">Repository GitHub di XMLTV</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Parsing XMLTV con Python. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>
+```
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2026 - Per maggiori informazioni visita <a href="https://streaming-community.xyz" rel="dofollow">Streaming Community</a></p>
+    </div>
+</body>
+</html>
